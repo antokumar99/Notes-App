@@ -99,4 +99,14 @@ const changePassword = asyncHandler(async (req, res) => {
   res.json({ success: true, message: 'Password updated successfully' });
 });
 
-module.exports = { register, login, getMe, updateProfile, changePassword };
+const logout = (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+  });
+  res.status(200).json({ success: true, message: "Logged out successfully" });
+};
+
+
+module.exports = { register, login, getMe, updateProfile, changePassword, logout };

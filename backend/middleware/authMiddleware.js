@@ -9,6 +9,8 @@ const User = require('../models/User.js');
 const protect = asyncHandler(async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
+  console.log('authHeader:', authHeader); // Debug log
+
   if (!authHeader?.startsWith('Bearer ')) {
     res.status(401);
     throw new Error('Not authorised – no token');
