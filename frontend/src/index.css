@@ -1,70 +1,42 @@
 @import "tailwindcss";
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
   }
-  a:hover {
-    color: #747bff;
+
+  html { font-family: var(--font-body); }
+
+  /* scrollbar */
+  ::-webkit-scrollbar       { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #2a2a3d; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3d3d58; }
+}
+
+/* ── note color themes ─────────────────────────────────────────── */
+@layer utilities {
+  .note-zinc    { --note-bg: #18181b; --note-border: #3f3f46; --note-accent: #a1a1aa; }
+  .note-blue    { --note-bg: #0f172a; --note-border: #1e3a5f; --note-accent: #3b82f6; }
+  .note-violet  { --note-bg: #1e1b4b; --note-border: #3730a3; --note-accent: #8b5cf6; }
+  .note-rose    { --note-bg: #1c0a0a; --note-border: #7f1d1d; --note-accent: #f43f5e; }
+  .note-amber   { --note-bg: #1c1204; --note-border: #78350f; --note-accent: #f59e0b; }
+  .note-emerald { --note-bg: #022c22; --note-border: #064e3b; --note-accent: #10b981; }
+  .note-sky     { --note-bg: #0c1a2e; --note-border: #0c4a6e; --note-accent: #0ea5e9; }
+  .note-pink    { --note-bg: #2d0a1e; --note-border: #831843; --note-accent: #ec4899; }
+
+  /* shimmer skeleton */
+  .skeleton {
+    background: linear-gradient(90deg, #1e1e2e 25%, #2a2a3d 50%, #1e1e2e 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s infinite;
   }
-  button {
-    background-color: #f9f9f9;
+
+  /* glass card */
+  .glass {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.07);
   }
 }
